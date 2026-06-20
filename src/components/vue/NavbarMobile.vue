@@ -62,7 +62,7 @@
           <li><a href="#contacto" @click="close">Contacto</a></li>
           <li>
             <a
-              href="https://wa.me/524491234567"
+              href="https://wa.me/524493896785"
               target="_blank"
               rel="noopener noreferrer"
               class="btn btn--primary"
