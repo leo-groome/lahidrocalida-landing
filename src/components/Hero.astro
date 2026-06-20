@@ -91,8 +91,12 @@
       alt="" draggable="false"/>
 
     <!-- BOTTOM CENTER / RIGHT -->
-    <img src="/images/hero-ingredients/ingredient_pork_crackling.webp"
+    <img src="/images/hero-ingredients/ingredient_pork_crackling_only.webp"
       class="ingredient-float parallax-fast ingredient--chicharron"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_radish.webp"
+      class="ingredient-float parallax-med ingredient--radish"
       alt="" draggable="false"/>
 
     <img src="/images/hero-ingredients/ingredient_tostada.webp"
@@ -206,19 +210,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: clamp(4.5rem, 9vh, 6.5rem);
+  padding-top: clamp(8rem, 15vh, 10rem);
   padding-inline: var(--space-lg);
   text-align: center;
   pointer-events: none;
 }
 
 .hero__eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-gold);
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
+  color: var(--color-ink-60);
+  font-weight: 500;
+  margin-bottom: var(--space-xs);
 }
 
 .hero__title {
@@ -233,14 +237,14 @@
 }
 
 .hero__title-line1 {
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
   color: var(--color-gold);
   display: block;
 }
 
 .hero__title-italic {
   font-style: italic;
-  font-size: clamp(3rem, 9vw, 7rem);
+  font-size: clamp(2.4rem, 7.5vw, 5.5rem);
   color: var(--color-chile);
   line-height: 0.95;
   display: block;
@@ -248,10 +252,10 @@
 
 .hero__slogan {
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 2vw, 1.35rem);
+  font-size: clamp(1.1rem, 2.8vw, 1.8rem);
   font-weight: 700;
   color: var(--color-ink);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 /* CTAs */
@@ -330,19 +334,24 @@
   animation-fill-mode: both;
   animation-timing-function: linear;
   animation-range: 0vh 120vh;
+  /* Default transform variables */
+  --r: 0deg;
+  --s: 1;
+  --sy: 1;
+  transform: translateY(0) rotate(var(--r)) scale(var(--s), var(--sy));
 }
 
 @keyframes parallaxSlow {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-35px); }
+  from { transform: translateY(0) rotate(var(--r)) scale(var(--s), var(--sy)); }
+  to   { transform: translateY(-35px) rotate(var(--r)) scale(var(--s), var(--sy)); }
 }
 @keyframes parallaxMed {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-55px); }
+  from { transform: translateY(0) rotate(var(--r)) scale(var(--s), var(--sy)); }
+  to   { transform: translateY(-55px) rotate(var(--r)) scale(var(--s), var(--sy)); }
 }
 @keyframes parallaxFast {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-80px); }
+  from { transform: translateY(0) rotate(var(--r)) scale(var(--s), var(--sy)); }
+  to   { transform: translateY(-80px) rotate(var(--r)) scale(var(--s), var(--sy)); }
 }
 
 .parallax-slow { animation-name: parallaxSlow; }
@@ -353,117 +362,166 @@
 
 /* === TOP LEFT === */
 .ingredient--fork-tl {
-  top: 10%; left: 3%;
+  top: 15%; left: 5%;
   width: clamp(70px, 8vw, 115px);
-  transform: rotate(-45deg);
+  --r: -45deg;
+  --s: 1;
+  --sy: 1;
 }
 .ingredient--lime-tl {
-  top: 14%; left: 8%;
+  top: 20%; left: 12%;
   width: clamp(72px, 8vw, 118px);
-  transform: rotate(-10deg);
+  --r: -10deg;
+  --s: 1;
+  --sy: 1;
 }
 .ingredient--ancho-tl {
-  top: 26%; left: 3%;
+  top: 35%; left: 6%;
   width: clamp(60px, 7vw, 105px);
-  transform: rotate(-35deg);
+  --r: -35deg;
+  --s: 1;
+  --sy: 1;
 }
 .ingredient--oregano-tl {
-  top: 8%; left: 20%;
+  top: 12%; left: 22%;
   width: clamp(68px, 7.5vw, 112px);
-  transform: rotate(-14deg);
+  --r: -14deg;
+  --s: 1;
+  --sy: 1;
 }
 
 /* === LEFT MIDDLE === */
 .ingredient--spoon-l {
-  top: 44%; left: 4%;
+  top: 48%; left: 5%;
   width: clamp(65px, 7.5vw, 110px);
-  transform: rotate(30deg);
+  --r: 30deg;
+  --s: -1;
+  --sy: 1;
 }
 .ingredient--garlic {
-  top: 55%; left: 10%;
+  top: 55%; left: 15%;
   width: clamp(60px, 6.8vw, 100px);
-  transform: rotate(-6deg);
+  --r: -6deg;
+  --s: 1;
+  --sy: 1;
 }
 .ingredient--lime-lm {
-  top: 38%; left: 14%;
+  top: 42%; left: 20%;
   width: clamp(52px, 5.8vw, 86px);
-  transform: rotate(22deg);
+  --r: 22deg;
+  --s: -1;
+  --sy: 1;
 }
 .ingredient--verde-l {
-  top: 65%; left: 3%;
+  top: 68%; left: 8%;
   width: clamp(55px, 6vw, 90px);
-  transform: rotate(25deg);
+  --r: 25deg;
+  --s: 1;
+  --sy: 1;
 }
 
 /* === TOP RIGHT === */
 .ingredient--spoon-tr {
-  top: 8%; right: 4%;
+  top: 12%; right: 5%;
   width: clamp(65px, 7.5vw, 110px);
-  transform: rotate(-50deg);
+  --r: -50deg;
+  --s: 1;
+  --sy: -1;
 }
 .ingredient--lime-tr {
-  top: 12%; right: 7%;
+  top: 18%; right: 12%;
   width: clamp(72px, 8vw, 116px);
-  transform: rotate(12deg);
+  --r: 12deg;
+  --s: -1;
+  --sy: -1;
 }
 .ingredient--arbol-tr {
-  top: 24%; right: 2%;
+  top: 30%; right: 8%;
   width: clamp(55px, 6vw, 90px);
-  transform: rotate(40deg);
+  --r: 40deg;
+  --s: -1;
+  --sy: 1;
 }
 
 /* === RIGHT MIDDLE === */
 .ingredient--ancho-rm {
-  top: 32%; right: 12%;
+  top: 40%; right: 15%;
   width: clamp(60px, 7vw, 100px);
-  transform: rotate(-50deg);
+  --r: -50deg;
+  --s: -1;
+  --sy: 1;
 }
 .ingredient--corn-r {
-  top: 48%; right: 5%;
+  top: 52%; right: 8%;
   width: clamp(60px, 7vw, 100px);
-  transform: rotate(10deg);
+  --r: 10deg;
+  --s: 1;
+  --sy: 1;
 }
 .ingredient--fork-rm {
-  top: 40%; right: 2%;
+  top: 45%; right: 3%;
   width: clamp(65px, 7.5vw, 110px);
-  transform: rotate(55deg);
+  --r: 55deg;
+  --s: -1;
+  --sy: -1;
 }
 .ingredient--lime-rm {
-  top: 60%; right: 8%;
+  top: 62%; right: 12%;
   width: clamp(50px, 5.8vw, 86px);
-  transform: rotate(-16deg);
+  --r: -16deg;
+  --s: -1;
+  --sy: -1;
 }
 .ingredient--verde-r {
-  top: 30%; right: 14%;
+  top: 35%; right: 20%;
   width: clamp(55px, 6vw, 90px);
-  transform: rotate(-30deg);
+  --r: -30deg;
+  --s: 1;
+  --sy: -1;
 }
 
 /* === BOTTOM — visible in 100vh === */
 .ingredient--chicharron {
-  top: 74%; left: 22%;
-  width: clamp(80px, 9.5vw, 140px);
-  transform: rotate(-6deg);
+  top: 85%; left: 20%;
+  width: clamp(50px, 6vw, 75px);
+  --r: -12deg;
+  --s: 1;
+  --sy: 1;
+}
+.ingredient--radish {
+  top: 84%; left: 6%;
+  width: clamp(28px, 3.2vw, 45px);
+  --r: 15deg;
+  --s: 1;
+  --sy: 1;
 }
 .ingredient--totopo-l {
-  top: 70%; left: 8%;
+  top: 72%; left: 10%;
   width: clamp(64px, 7.5vw, 110px);
-  transform: rotate(12deg);
+  --r: 12deg;
+  --s: 1;
+  --sy: 1;
 }
 .ingredient--totopo-r {
-  top: 72%; right: 6%;
+  top: 74%; right: 8%;
   width: clamp(64px, 7.5vw, 108px);
-  transform: rotate(-16deg);
+  --r: -16deg;
+  --s: -1;
+  --sy: 1;
 }
 .ingredient--corn-bl {
-  top: 67%; left: 20%;
+  top: 68%; left: 18%;
   width: clamp(50px, 5.8vw, 86px);
-  transform: rotate(8deg);
+  --r: 8deg;
+  --s: -1;
+  --sy: 1;
 }
 .ingredient--oregano-br {
-  top: 68%; right: 20%;
+  top: 70%; right: 22%;
   width: clamp(62px, 7vw, 102px);
-  transform: rotate(-8deg);
+  --r: -8deg;
+  --s: -1;
+  --sy: 1;
 }
 
 @media (max-width: 768px) {
@@ -482,7 +540,7 @@
   }
 
   .hero__bowl-wrapper {
-    bottom: -10vh;
+    bottom: -2vh;
   }
 
   .hero__bowl-img {
