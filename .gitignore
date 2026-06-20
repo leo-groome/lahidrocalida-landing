@@ -1,0 +1,6 @@
+node_modules
+.astro/
+dist/
+hero-screenshot-1440.png
+hero-screenshot-390.png
+inspiracion.png

@@ -1,0 +1,542 @@
+---
+// Hero.astro — Flat-lay fotorealista: bowl centrado visible al cargar + ingredientes SVG flotantes
+---
+
+<section class="hero" id="inicio" aria-label="Sección principal">
+
+  <!-- Fondo con textura sutil -->
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__bg-pattern"></div>
+    <div class="hero__bg-gradient"></div>
+  </div>
+
+  <!-- Ingredientes flotantes — 21 piezas distribuidas alrededor del bowl -->
+  <div class="hero__ingredients" aria-hidden="true">
+
+    <!-- TOP LEFT -->
+    <img src="/images/hero-ingredients/ingredient_spoon.webp"
+      class="ingredient-float parallax-slow ingredient--fork-tl"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_lime.webp"
+      class="ingredient-float parallax-med ingredient--lime-tl"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_dried_chile.webp"
+      class="ingredient-float parallax-fast ingredient--ancho-tl"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_oregano.webp"
+      class="ingredient-float parallax-slow ingredient--oregano-tl"
+      alt="" draggable="false"/>
+
+    <!-- LEFT MIDDLE (a la altura del bowl) -->
+    <img src="/images/hero-ingredients/ingredient_spoon.webp"
+      class="ingredient-float parallax-med ingredient--spoon-l"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_garlic.webp"
+      class="ingredient-float parallax-slow ingredient--garlic"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_lime.webp"
+      class="ingredient-float parallax-fast ingredient--lime-lm"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
+      class="ingredient-float parallax-med ingredient--verde-l"
+      alt="" draggable="false"/>
+
+    <!-- TOP RIGHT -->
+    <img src="/images/hero-ingredients/ingredient_spoon.webp"
+      class="ingredient-float parallax-slow ingredient--spoon-tr"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_lime.webp"
+      class="ingredient-float parallax-med ingredient--lime-tr"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
+      class="ingredient-float parallax-fast ingredient--arbol-tr"
+      alt="" draggable="false"/>
+
+    <!-- RIGHT MIDDLE (a la altura del bowl) -->
+    <img src="/images/hero-ingredients/ingredient_dried_chile.webp"
+      class="ingredient-float parallax-slow ingredient--ancho-rm"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_hominy.webp"
+      class="ingredient-float parallax-med ingredient--corn-r"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_spoon.webp"
+      class="ingredient-float parallax-fast ingredient--fork-rm"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_lime.webp"
+      class="ingredient-float parallax-slow ingredient--lime-rm"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
+      class="ingredient-float parallax-med ingredient--verde-r"
+      alt="" draggable="false"/>
+
+    <!-- BOTTOM LEFT -->
+    <img src="/images/hero-ingredients/ingredient_tostada.webp"
+      class="ingredient-float parallax-slow ingredient--totopo-l"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_hominy.webp"
+      class="ingredient-float parallax-med ingredient--corn-bl"
+      alt="" draggable="false"/>
+
+    <!-- BOTTOM CENTER / RIGHT -->
+    <img src="/images/hero-ingredients/ingredient_pork_crackling.webp"
+      class="ingredient-float parallax-fast ingredient--chicharron"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_tostada.webp"
+      class="ingredient-float parallax-slow ingredient--totopo-r"
+      alt="" draggable="false"/>
+
+    <img src="/images/hero-ingredients/ingredient_oregano.webp"
+      class="ingredient-float parallax-med ingredient--oregano-br"
+      alt="" draggable="false"/>
+
+  </div>
+
+  <!-- Contenido principal — title arriba -->
+  <div class="hero__content">
+    <p class="hero__eyebrow">Aguascalientes, México</p>
+
+    <h1 class="hero__title">
+      <span class="hero__title-line1">La Hidrocálida</span>
+      <em class="hero__title-italic">Pozolería</em>
+    </h1>
+
+    <p class="hero__slogan">El verdadero amor sabe a pozole</p>
+
+    <div class="hero__ctas">
+      <a href="#menu" class="btn btn--primary" id="hero-cta-menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+        </svg>
+        Ver Menú
+      </a>
+      <a
+        href="https://wa.me/524491234567?text=Hola%2C%20quiero%20hacer%20una%20reservaci%C3%B3n"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn--whatsapp"
+        id="hero-cta-whatsapp"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Bowl centrado debajo del contenido -->
+  <div class="hero__bowl-wrapper" aria-hidden="true">
+    <div class="hero__bowl-glow"></div>
+    <img
+      src="/bowl-pozole-rojo-nobg.webp"
+      alt=""
+      class="hero__bowl-img"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll-indicator" aria-hidden="true">
+    <div class="hero__scroll-mouse">
+      <div class="hero__scroll-wheel"></div>
+    </div>
+    <span>Descubre más</span>
+  </div>
+
+</section>
+
+<style>
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(200, 151, 26, 0.03) 30px,
+      rgba(200, 151, 26, 0.03) 31px
+    );
+  pointer-events: none;
+}
+
+.hero__bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 30%,
+    rgba(200, 151, 26, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ── Content ───────────────────────────────────────────────── */
+.hero__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: clamp(4.5rem, 9vh, 6.5rem);
+  padding-inline: var(--space-lg);
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 1.0;
+  margin-bottom: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.hero__title-line1 {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  color: var(--color-gold);
+  display: block;
+}
+
+.hero__title-italic {
+  font-style: italic;
+  font-size: clamp(3rem, 9vw, 7rem);
+  color: var(--color-chile);
+  line-height: 0.95;
+  display: block;
+}
+
+.hero__slogan {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: var(--space-md);
+}
+
+/* CTAs */
+.hero__ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  pointer-events: all;
+}
+
+/* ── Scroll indicator ──────────────────────────────────────── */
+.hero__bowl-wrapper {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: clamp(-30px, -3vh, -10px);
+  animation: bowlFloat 6s ease-in-out infinite;
+}
+
+@keyframes bowlFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero__bowl-glow {
+  position: absolute;
+  width: 580px;
+  height: 580px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(139, 26, 26, 0.10) 0%,
+    rgba(200, 151, 26, 0.05) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero__bowl-img {
+  width: clamp(340px, 44vw, 600px);
+  height: auto;
+  filter:
+    drop-shadow(0 28px 55px rgba(139, 26, 26, 0.25))
+    drop-shadow(0 8px 18px rgba(0,0,0,0.15));
+  position: relative;
+  z-index: 1;
+}
+
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.hero__scroll-mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--color-ink-30);
+  border-radius: 13px;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+}
+
+.hero__scroll-wheel {
+  width: 4px;
+  height: 8px;
+  background: var(--color-gold);
+  border-radius: 2px;
+  animation: scrollWheel 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+
+.hero__scroll-indicator span {
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-ink-60);
+  font-weight: 500;
+}
+
+/* ── Ingredient float base ─────────────────────────────────── */
+.hero__ingredients {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.ingredient-float {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+  filter:
+    drop-shadow(0 10px 16px rgba(0,0,0,0.20))
+    saturate(1.15)
+    contrast(1.04);
+  animation-timeline: scroll(root);
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-range: 0vh 120vh;
+}
+
+@keyframes parallaxSlow {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-35px); }
+}
+@keyframes parallaxMed {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-55px); }
+}
+@keyframes parallaxFast {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-80px); }
+}
+
+.parallax-slow { animation-name: parallaxSlow; }
+.parallax-med  { animation-name: parallaxMed; }
+.parallax-fast { animation-name: parallaxFast; }
+
+/* ── Ingredient positions ──────────────────────────────────── */
+
+/* === TOP LEFT === */
+.ingredient--fork-tl {
+  top: 10%; left: 3%;
+  width: clamp(70px, 8vw, 115px);
+  transform: rotate(-45deg);
+}
+.ingredient--lime-tl {
+  top: 14%; left: 8%;
+  width: clamp(72px, 8vw, 118px);
+  transform: rotate(-10deg);
+}
+.ingredient--ancho-tl {
+  top: 26%; left: 3%;
+  width: clamp(60px, 7vw, 105px);
+  transform: rotate(-35deg);
+}
+.ingredient--oregano-tl {
+  top: 8%; left: 20%;
+  width: clamp(68px, 7.5vw, 112px);
+  transform: rotate(-14deg);
+}
+
+/* === LEFT MIDDLE === */
+.ingredient--spoon-l {
+  top: 44%; left: 4%;
+  width: clamp(65px, 7.5vw, 110px);
+  transform: rotate(30deg);
+}
+.ingredient--garlic {
+  top: 55%; left: 10%;
+  width: clamp(60px, 6.8vw, 100px);
+  transform: rotate(-6deg);
+}
+.ingredient--lime-lm {
+  top: 38%; left: 14%;
+  width: clamp(52px, 5.8vw, 86px);
+  transform: rotate(22deg);
+}
+.ingredient--verde-l {
+  top: 65%; left: 3%;
+  width: clamp(55px, 6vw, 90px);
+  transform: rotate(25deg);
+}
+
+/* === TOP RIGHT === */
+.ingredient--spoon-tr {
+  top: 8%; right: 4%;
+  width: clamp(65px, 7.5vw, 110px);
+  transform: rotate(-50deg);
+}
+.ingredient--lime-tr {
+  top: 12%; right: 7%;
+  width: clamp(72px, 8vw, 116px);
+  transform: rotate(12deg);
+}
+.ingredient--arbol-tr {
+  top: 24%; right: 2%;
+  width: clamp(55px, 6vw, 90px);
+  transform: rotate(40deg);
+}
+
+/* === RIGHT MIDDLE === */
+.ingredient--ancho-rm {
+  top: 32%; right: 12%;
+  width: clamp(60px, 7vw, 100px);
+  transform: rotate(-50deg);
+}
+.ingredient--corn-r {
+  top: 48%; right: 5%;
+  width: clamp(60px, 7vw, 100px);
+  transform: rotate(10deg);
+}
+.ingredient--fork-rm {
+  top: 40%; right: 2%;
+  width: clamp(65px, 7.5vw, 110px);
+  transform: rotate(55deg);
+}
+.ingredient--lime-rm {
+  top: 60%; right: 8%;
+  width: clamp(50px, 5.8vw, 86px);
+  transform: rotate(-16deg);
+}
+.ingredient--verde-r {
+  top: 30%; right: 14%;
+  width: clamp(55px, 6vw, 90px);
+  transform: rotate(-30deg);
+}
+
+/* === BOTTOM — visible in 100vh === */
+.ingredient--chicharron {
+  top: 74%; left: 22%;
+  width: clamp(80px, 9.5vw, 140px);
+  transform: rotate(-6deg);
+}
+.ingredient--totopo-l {
+  top: 70%; left: 8%;
+  width: clamp(64px, 7.5vw, 110px);
+  transform: rotate(12deg);
+}
+.ingredient--totopo-r {
+  top: 72%; right: 6%;
+  width: clamp(64px, 7.5vw, 108px);
+  transform: rotate(-16deg);
+}
+.ingredient--corn-bl {
+  top: 67%; left: 20%;
+  width: clamp(50px, 5.8vw, 86px);
+  transform: rotate(8deg);
+}
+.ingredient--oregano-br {
+  top: 68%; right: 20%;
+  width: clamp(62px, 7vw, 102px);
+  transform: rotate(-8deg);
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    padding-top: 6rem;
+    padding-inline: var(--space-md);
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__ingredients {
+    display: none;
+  }
+
+  .hero__bowl-img {
+    width: clamp(260px, 82vw, 400px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__bowl-wrapper,
+  .ingredient-float,
+  .hero__scroll-wheel {
+    animation: none !important;
+  }
+}
+</style>

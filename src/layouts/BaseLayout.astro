@@ -1,0 +1,44 @@
+---
+// BaseLayout.astro — HTML base con SEO y fuentes
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'La Hidrocalida Pozolería — El verdadero amor sabe a pozole',
+  description = 'Pozolería auténtica en Aguascalientes. Disfruta el sabor de la tradición con ingredientes frescos y recetas que saben a hogar. Ordena en línea o visítanos.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Favicon placeholder -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

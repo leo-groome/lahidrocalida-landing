@@ -1,0 +1,183 @@
+---
+const platillos = [
+  {
+    img: '/images/menu/pozole-rojo.jpg',
+    nombre: 'Pozole Rojo Tradicional',
+    descripcion: 'Receta familiar, granos de maíz cacahuazintle, carne de cerdo y chiles selectos.',
+    precio: '$145',
+  },
+  {
+    img: '/images/menu/pozole-rojo-3.jpg',
+    nombre: 'Pozole Especial',
+    descripcion: 'Doble porción de carne y guarniciones premium. El orgullo de la casa.',
+    precio: '$185',
+  },
+  {
+    img: '/images/menu/enchiladas.jpg',
+    nombre: 'Enchiladas Hidrocálidas',
+    descripcion: 'Tortillas hechas a mano bañadas en salsa de la casa, crema y queso fresco.',
+    precio: '$120',
+  },
+  {
+    img: '/images/menu/platillo-1.png',
+    nombre: 'Tostadas Tradicionales',
+    descripcion: 'Tostadas crujientes con pollo deshebrado, lechuga, jocoque y salsa roja.',
+    precio: '$110',
+  },
+  {
+    img: '/images/menu/platillo-2.png',
+    nombre: 'Sopes Surtidos',
+    descripcion: 'Sopes de maíz azul con frijoles negros, carne surtida y verduras de temporada.',
+    precio: '$130',
+  },
+  {
+    img: '/images/menu/platillo-3.png',
+    nombre: 'Agua de Jamaica',
+    descripcion: 'Agua fresca de flor de jamaica artesanal, ligeramente dulce y refrescante.',
+    precio: '$35',
+  },
+];
+---
+
+<section id="menu" class="platillos">
+  <div class="platillos__container">
+    <p class="eyebrow">MENÚ</p>
+    <h2 class="platillos__heading">Nuestros Platillos</h2>
+    <p class="platillos__sub">Ingredientes frescos del mercado local, recetas que llevan décadas en nuestra familia.</p>
+
+    <div class="platillos__grid">
+      {platillos.map((p) => (
+        <article class="platillo-card">
+          <div class="platillo-card__img-wrap">
+            <img
+              src={p.img}
+              alt={p.nombre}
+              class="platillo-card__img"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="platillo-card__body">
+            <h3 class="platillo-card__nombre">{p.nombre}</h3>
+            <p class="platillo-card__desc">{p.descripcion}</p>
+            <span class="platillo-card__precio">{p.precio}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.platillos {
+  background: var(--color-cream);
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.platillos__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+  margin-bottom: var(--space-sm);
+}
+
+.platillos__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: var(--space-md);
+  line-height: 1.15;
+}
+
+.platillos__sub {
+  font-size: 1.0625rem;
+  color: var(--color-ink-60);
+  max-width: 560px;
+  margin-bottom: var(--space-2xl);
+  line-height: 1.65;
+}
+
+.platillos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.platillo-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.platillo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.platillo-card__img-wrap {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.platillo-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms var(--ease-out);
+}
+
+.platillo-card:hover .platillo-card__img {
+  transform: scale(1.04);
+}
+
+.platillo-card__body {
+  padding: var(--space-lg);
+}
+
+.platillo-card__nombre {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: var(--space-xs);
+  line-height: 1.2;
+}
+
+.platillo-card__desc {
+  font-size: 0.9rem;
+  color: var(--color-ink-60);
+  font-style: italic;
+  line-height: 1.55;
+  margin-bottom: var(--space-md);
+}
+
+.platillo-card__precio {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .platillos {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .platillos__grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

@@ -1,0 +1,196 @@
+---
+const reviews = [
+  {
+    nombre: 'María González',
+    texto: 'Sin duda el mejor pozole de Aguascalientes. La sazón es como el de mi abuela — cálido, reconfortante y con un sabor que te regresa a la infancia.',
+    avatarBg: 'var(--color-navy)',
+    avatarColor: '#fff',
+    inicial: 'M',
+  },
+  {
+    nombre: 'Carlos Ruiz',
+    texto: 'Ambiente familiar, servicio impecable y los chiles toreados son absolutamente adictivos. Ya van más de diez visitas y nunca defrauda.',
+    avatarBg: 'var(--color-yellow)',
+    avatarColor: 'var(--color-navy)',
+    inicial: 'C',
+  },
+  {
+    nombre: 'Ana Mendoza',
+    texto: 'Visitar La Hidrocálida es regresar a casa. Cada cucharada es un abrazo. El local es acogedor y el pozole especial justifica el viaje desde cualquier parte de la ciudad.',
+    avatarBg: 'var(--color-green-brand)',
+    avatarColor: '#fff',
+    inicial: 'A',
+  },
+];
+---
+
+<section id="reviews" class="reviews">
+  <div class="reviews__container">
+    <p class="reviews__eyebrow">RESEÑAS</p>
+    <h2 class="reviews__heading">Lo que dicen nuestros comensales</h2>
+
+    <div class="reviews__grid">
+      {reviews.map((r) => (
+        <article class="review-card">
+          <div class="review-card__header">
+            <div
+              class="review-card__avatar"
+              style={`background: ${r.avatarBg}; color: ${r.avatarColor};`}
+              aria-hidden="true"
+            >
+              {r.inicial}
+            </div>
+            <div class="review-card__meta">
+              <p class="review-card__nombre">{r.nombre}</p>
+              <div class="review-card__stars" aria-label="5 estrellas" role="img">
+                {Array.from({ length: 5 }).map(() => (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--color-yellow)" aria-hidden="true">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p class="review-card__texto">"{r.texto}"</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="reviews__footer">
+      <a
+        href="https://maps.google.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="reviews__cta"
+      >
+        Ver más reseñas en Google &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.reviews {
+  background: var(--color-cream);
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.reviews__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reviews__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+  margin-bottom: var(--space-sm);
+}
+
+.reviews__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: var(--space-2xl);
+  line-height: 1.15;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  text-align: left;
+}
+
+.review-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.review-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.review-card__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.review-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.review-card__nombre {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-navy);
+  line-height: 1.2;
+}
+
+.review-card__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.review-card__texto {
+  font-size: 0.9375rem;
+  color: var(--color-ink-60);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.reviews__footer {
+  margin-top: var(--space-2xl);
+}
+
+.reviews__cta {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  opacity: 0.7;
+  transition: opacity var(--transition);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.reviews__cta:hover {
+  opacity: 1;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .reviews {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .reviews__grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
