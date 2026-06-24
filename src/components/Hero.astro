@@ -1,5 +1,8 @@
 ---
 // Hero.astro — Flat-lay fotorealista: bowl centrado visible al cargar + ingredientes SVG flotantes
+// Estructura dos capas:
+//   .ingredient-float (div wrapper) → GSAP posee el transform (scatter / parallax)
+//   .ingredient-inner (img)          → CSS posee la transformación base (rotate/flip) + idle bob
 ---
 
 <section class="hero" id="inicio" aria-label="Sección principal">
@@ -10,102 +13,124 @@
     <div class="hero__bg-gradient"></div>
   </div>
 
-  <!-- Ingredientes flotantes — 21 piezas distribuidas alrededor del bowl -->
+  <!-- Ingredientes flotantes — 22 piezas distribuidas alrededor del bowl -->
   <div class="hero__ingredients" aria-hidden="true">
 
     <!-- TOP LEFT -->
-    <img src="/images/hero-ingredients/ingredient_spoon.webp"
-      class="ingredient-float parallax-slow ingredient--fork-tl"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-slow ingredient--fork-tl">
+      <img src="/images/hero-ingredients/ingredient_spoon.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_lime.webp"
-      class="ingredient-float parallax-med ingredient--lime-tl"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--lime-tl">
+      <img src="/images/hero-ingredients/ingredient_lime.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_dried_chile.webp"
-      class="ingredient-float parallax-fast ingredient--ancho-tl"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-fast ingredient--ancho-tl">
+      <img src="/images/hero-ingredients/ingredient_dried_chile.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_oregano.webp"
-      class="ingredient-float parallax-slow ingredient--oregano-tl"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-slow ingredient--oregano-tl">
+      <img src="/images/hero-ingredients/ingredient_oregano.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
     <!-- LEFT MIDDLE (a la altura del bowl) -->
-    <img src="/images/hero-ingredients/ingredient_spoon.webp"
-      class="ingredient-float parallax-med ingredient--spoon-l"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--spoon-l">
+      <img src="/images/hero-ingredients/ingredient_spoon.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_garlic.webp"
-      class="ingredient-float parallax-slow ingredient--garlic"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-slow ingredient--garlic">
+      <img src="/images/hero-ingredients/ingredient_garlic.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_lime.webp"
-      class="ingredient-float parallax-fast ingredient--lime-lm"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-fast ingredient--lime-lm">
+      <img src="/images/hero-ingredients/ingredient_lime.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
-      class="ingredient-float parallax-med ingredient--verde-l"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--verde-l">
+      <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
     <!-- TOP RIGHT -->
-    <img src="/images/hero-ingredients/ingredient_spoon.webp"
-      class="ingredient-float parallax-slow ingredient--spoon-tr"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-slow ingredient--spoon-tr">
+      <img src="/images/hero-ingredients/ingredient_spoon.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_lime.webp"
-      class="ingredient-float parallax-med ingredient--lime-tr"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--lime-tr">
+      <img src="/images/hero-ingredients/ingredient_lime.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
-      class="ingredient-float parallax-fast ingredient--arbol-tr"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-fast ingredient--arbol-tr">
+      <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
     <!-- RIGHT MIDDLE (a la altura del bowl) -->
-    <img src="/images/hero-ingredients/ingredient_dried_chile.webp"
-      class="ingredient-float parallax-slow ingredient--ancho-rm"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-slow ingredient--ancho-rm">
+      <img src="/images/hero-ingredients/ingredient_dried_chile.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_hominy.webp"
-      class="ingredient-float parallax-med ingredient--corn-r"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--corn-r">
+      <img src="/images/hero-ingredients/ingredient_hominy.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_spoon.webp"
-      class="ingredient-float parallax-fast ingredient--fork-rm"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-fast ingredient--fork-rm">
+      <img src="/images/hero-ingredients/ingredient_spoon.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_lime.webp"
-      class="ingredient-float parallax-slow ingredient--lime-rm"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-slow ingredient--lime-rm">
+      <img src="/images/hero-ingredients/ingredient_lime.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
-      class="ingredient-float parallax-med ingredient--verde-r"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--verde-r">
+      <img src="/images/hero-ingredients/ingredient_fresh_chile.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
     <!-- BOTTOM LEFT -->
-    <img src="/images/hero-ingredients/ingredient_tostada.webp"
-      class="ingredient-float parallax-slow ingredient--totopo-l"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-slow ingredient--totopo-l">
+      <img src="/images/hero-ingredients/ingredient_tostada.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_hominy.webp"
-      class="ingredient-float parallax-med ingredient--corn-bl"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--corn-bl">
+      <img src="/images/hero-ingredients/ingredient_hominy.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
     <!-- BOTTOM CENTER / RIGHT -->
-    <img src="/images/hero-ingredients/ingredient_pork_crackling_only.webp"
-      class="ingredient-float parallax-fast ingredient--chicharron"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-fast ingredient--chicharron">
+      <img src="/images/hero-ingredients/ingredient_pork_crackling_only.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_radish.webp"
-      class="ingredient-float parallax-med ingredient--radish"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--radish">
+      <img src="/images/hero-ingredients/ingredient_radish.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_tostada.webp"
-      class="ingredient-float parallax-slow ingredient--totopo-r"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-slow ingredient--totopo-r">
+      <img src="/images/hero-ingredients/ingredient_tostada.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
-    <img src="/images/hero-ingredients/ingredient_oregano.webp"
-      class="ingredient-float parallax-med ingredient--oregano-br"
-      alt="" draggable="false"/>
+    <div class="ingredient-float parallax-med ingredient--oregano-br">
+      <img src="/images/hero-ingredients/ingredient_oregano.webp"
+        class="ingredient-inner" alt="" draggable="false"/>
+    </div>
 
   </div>
 
@@ -202,7 +227,6 @@
   pointer-events: none;
 }
 
-/* ── Content ───────────────────────────────────────────────── */
 .hero__content {
   position: relative;
   z-index: 10;
@@ -267,7 +291,6 @@
   pointer-events: all;
 }
 
-/* ── Scroll indicator ──────────────────────────────────────── */
 .hero__bowl-wrapper {
   position: absolute;
   bottom: -20vh;
@@ -314,7 +337,7 @@
   z-index: 1;
 }
 
-/* ── Ingredient float base ─────────────────────────────────── */
+/* ─── Ingredient container ─────────────────────────────────────────────── */
 .hero__ingredients {
   position: absolute;
   inset: 0;
@@ -322,6 +345,10 @@
   z-index: 8;
 }
 
+/* ─── Ingredient wrapper — GSAP layer ─────────────────────────────────── */
+/* GSAP owns ALL transforms on this element (x, y, rotate).
+   No CSS transform is declared here — the inner img handles visual
+   rotation and flip so there is zero collision with GSAP's inline style. */
 .ingredient-float {
   position: absolute;
   pointer-events: none;
@@ -330,35 +357,39 @@
     drop-shadow(0 10px 16px rgba(0,0,0,0.20))
     saturate(1.15)
     contrast(1.04);
-  animation-timeline: scroll(root);
-  animation-fill-mode: both;
-  animation-timing-function: linear;
-  animation-range: 0vh 120vh;
-  /* Default transform variables */
+  /* Base CSS-var defaults — these cascade down to .ingredient-inner */
   --r: 0deg;
   --s: 1;
   --sy: 1;
-  transform: translateY(0) rotate(var(--r)) scale(var(--s), var(--sy));
 }
 
-@keyframes parallaxSlow {
-  from { transform: translateY(0) rotate(var(--r)) scale(var(--s), var(--sy)); }
-  to   { transform: translateY(-35px) rotate(var(--r)) scale(var(--s), var(--sy)); }
-}
-@keyframes parallaxMed {
-  from { transform: translateY(0) rotate(var(--r)) scale(var(--s), var(--sy)); }
-  to   { transform: translateY(-55px) rotate(var(--r)) scale(var(--s), var(--sy)); }
-}
-@keyframes parallaxFast {
-  from { transform: translateY(0) rotate(var(--r)) scale(var(--s), var(--sy)); }
-  to   { transform: translateY(-80px) rotate(var(--r)) scale(var(--s), var(--sy)); }
+/* ─── Ingredient inner image — CSS layer ──────────────────────────────── */
+/* Owns: base visual rotation + mirror flip (via inherited CSS vars)
+         + the idle bob animation.
+   GSAP animates the parent wrapper; this element is untouched by JS. */
+.ingredient-inner {
+  display: block;
+  width: 100%;
+  height: auto;
+  will-change: transform;
+  transform: rotate(var(--r)) scaleX(var(--s)) scaleY(var(--sy));
+  animation: idleBob 3.5s ease-in-out infinite alternate;
 }
 
-.parallax-slow { animation-name: parallaxSlow; }
-.parallax-med  { animation-name: parallaxMed; }
-.parallax-fast { animation-name: parallaxFast; }
+/* Varied phases / durations so 22 ingredients never bob in lockstep.
+   Negative delays start the animation mid-cycle at page load. */
+.ingredient-float:nth-child(2n) .ingredient-inner { animation-duration: 4.2s; animation-delay: -1.3s; }
+.ingredient-float:nth-child(3n) .ingredient-inner { animation-duration: 3.8s; animation-delay: -0.7s; }
+.ingredient-float:nth-child(5n) .ingredient-inner { animation-duration: 4.5s; animation-delay: -2.1s; }
+.ingredient-float:nth-child(7n) .ingredient-inner { animation-duration: 3.2s; animation-delay: -3.4s; }
 
-/* ── Ingredient positions ──────────────────────────────────── */
+/* translateY is appended after the base transform so rotation/flip are
+   preserved and only the Y axis is interpolated by CSS. */
+@keyframes idleBob {
+  from { transform: rotate(var(--r)) scaleX(var(--s)) scaleY(var(--sy)) translateY(0px); }
+  to   { transform: rotate(var(--r)) scaleX(var(--s)) scaleY(var(--sy)) translateY(-6px); }
+}
+
 
 /* === TOP LEFT === */
 .ingredient--fork-tl {
@@ -550,9 +581,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__bowl-wrapper,
-  .ingredient-float,
-  .hero__scroll-wheel {
+  .hero__bowl-wrapper {
+    animation: none !important;
+  }
+  .ingredient-inner {
     animation: none !important;
   }
 }

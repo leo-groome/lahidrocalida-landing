@@ -41,13 +41,13 @@ const platillos = [
 
 <section id="menu" class="platillos">
   <div class="platillos__container">
-    <p class="eyebrow">MENÚ</p>
-    <h2 class="platillos__heading">Nuestros Platillos</h2>
-    <p class="platillos__sub">Ingredientes frescos del mercado local, recetas que llevan décadas en nuestra familia.</p>
+    <p class="eyebrow" data-reveal>MENÚ</p>
+    <h2 class="platillos__heading" data-reveal>Nuestros Platillos</h2>
+    <p class="platillos__sub" data-reveal>Ingredientes frescos del mercado local, recetas que llevan décadas en nuestra familia.</p>
 
-    <div class="platillos__grid">
+    <div class="platillos__grid" data-reveal-group>
       {platillos.map((p) => (
-        <article class="platillo-card">
+        <article class="platillo-card" data-reveal>
           <div class="platillo-card__img-wrap">
             <img
               src={p.img}

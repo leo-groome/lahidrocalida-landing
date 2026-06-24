@@ -32,13 +32,38 @@ const {
     <!-- Favicon placeholder -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Anti-FOUC + reduce-motion: corre antes del paint -->
+    <script is:inline>
+      (function () {
+        var el = document.documentElement;
+        el.classList.add('js');
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          el.classList.add('reduce-motion');
+        }
+      })();
+    </script>
+
     <title>{title}</title>
   </head>
   <body>
     <slot />
+    <script>
+      import '../scripts/scroll-engine';
+    </script>
   </body>
 </html>
 
 <style is:global>
   @import '../styles/global.css';
+
+  /* Anti-FOUC reveals: ocultos solo si hay JS y NO reduce-motion.
+     Sin JS o con reduce-motion -> visibles (contrato del scroll-engine). */
+  html.js:not(.reduce-motion) [data-reveal] {
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+  html.reduce-motion [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 </style>

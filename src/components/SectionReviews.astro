@@ -26,12 +26,12 @@ const reviews = [
 
 <section id="reviews" class="reviews">
   <div class="reviews__container">
-    <p class="reviews__eyebrow">RESEÑAS</p>
-    <h2 class="reviews__heading">Lo que dicen nuestros comensales</h2>
+    <p class="reviews__eyebrow" data-reveal>RESEÑAS</p>
+    <h2 class="reviews__heading" data-reveal>Lo que dicen nuestros comensales</h2>
 
-    <div class="reviews__grid">
+    <div class="reviews__grid" data-reveal-group>
       {reviews.map((r) => (
-        <article class="review-card">
+        <article class="review-card" data-reveal>
           <div class="review-card__header">
             <div
               class="review-card__avatar"
@@ -62,6 +62,7 @@ const reviews = [
         target="_blank"
         rel="noopener noreferrer"
         class="reviews__cta"
+        data-reveal
       >
         Ver más reseñas en Google &rarr;
       </a>
