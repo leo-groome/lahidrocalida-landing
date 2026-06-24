@@ -1,40 +1,64 @@
 ---
 const platillos = [
   {
-    img: '/images/menu/pozole-rojo.jpg',
-    nombre: 'Pozole Rojo Tradicional',
-    descripcion: 'Receta familiar, granos de maíz cacahuazintle, carne de cerdo y chiles selectos.',
-    precio: '$145',
+    nombre: 'Pozole Verde',
+    descripcion: 'Caldo verde de maíz cacahuazintle, puerco o pollo. Incluye lechuga, orégano, limón, rábano, cebolla, tostadas y salsas.',
+    alt: 'Pozole verde con guarniciones',
+    // TODO: foto real
   },
   {
-    img: '/images/menu/pozole-rojo-3.jpg',
-    nombre: 'Pozole Especial',
-    descripcion: 'Doble porción de carne y guarniciones premium. El orgullo de la casa.',
-    precio: '$185',
+    nombre: 'Pozole Blanco',
+    descripcion: 'Caldo blanco tradicional con maíz cacahuazintle, puerco o pollo, y todas las guarniciones de la casa.',
+    alt: 'Pozole blanco con guarniciones',
+    // TODO: foto real
   },
   {
-    img: '/images/menu/enchiladas.jpg',
-    nombre: 'Enchiladas Hidrocálidas',
-    descripcion: 'Tortillas hechas a mano bañadas en salsa de la casa, crema y queso fresco.',
-    precio: '$120',
+    nombre: 'Pozole Rojo',
+    descripcion: 'Caldo rojo de chile guajillo, maíz cacahuazintle y carne de cerdo o pollo. La receta de siempre.',
+    img: '/real-images/PozoleRojo2.jpg',
+    alt: 'Bowl de pozole rojo con rábano, repollo y tostadas',
   },
   {
-    img: '/images/menu/platillo-1.png',
-    nombre: 'Tostadas Tradicionales',
-    descripcion: 'Tostadas crujientes con pollo deshebrado, lechuga, jocoque y salsa roja.',
-    precio: '$110',
+    nombre: 'Flautas',
+    descripcion: 'Orden de 5, de puerco o pollo. Con queso, crema, lechuga, zanahorias curtidas y salsa de jitomate.',
+    alt: 'Orden de flautas doradas',
+    // TODO: foto real
   },
   {
-    img: '/images/menu/platillo-2.png',
-    nombre: 'Sopes Surtidos',
-    descripcion: 'Sopes de maíz azul con frijoles negros, carne surtida y verduras de temporada.',
-    precio: '$130',
+    nombre: 'Tacos Dorados',
+    descripcion: 'Orden de 6 taquitos de papa con queso. Zanahoria curtida, crema, lechuga y salsa de jitomate.',
+    img: '/real-images/ChatGPT%20Image%20Jun%2021%2C%202025%2C%2007_51_37%20PM.png',
+    alt: 'Tacos dorados crujientes con guarniciones',
   },
   {
-    img: '/images/menu/platillo-3.png',
-    nombre: 'Agua de Jamaica',
-    descripcion: 'Agua fresca de flor de jamaica artesanal, ligeramente dulce y refrescante.',
-    precio: '$35',
+    nombre: 'Sopes',
+    descripcion: 'Orden de 3 sobre cama de frijoles refritos. Surtido de puerco, pollo o chicharrón, con queso y crema.',
+    alt: 'Orden de sopes preparados',
+    // TODO: foto real
+  },
+  {
+    nombre: 'Enchiladas Rojas',
+    descripcion: 'Orden de 4, relleno a elección. Con queso, crema, lechuga y cueritos.',
+    img: '/real-images/Enchiladas1.jpg',
+    alt: 'Enchiladas rojas con crema y queso',
+  },
+  {
+    nombre: 'Tostadas',
+    descripcion: 'Orden de 3 tostadas preparadas. Frijoles refritos, zanahoria curtida, queso, crema, lechuga y salsa de jitomate.',
+    alt: 'Orden de tostadas preparadas',
+    // TODO: foto real
+  },
+  {
+    nombre: 'Tamales Verdes y Rojos',
+    descripcion: 'Tamal individual verde o rojo. Solo en fines de semana.',
+    alt: 'Tamales verdes y rojos',
+    // TODO: foto real
+  },
+  {
+    nombre: 'Agua de Horchata y Jamaica',
+    descripcion: 'Aguas frescas preparadas a diario, ligeramente dulces y refrescantes.',
+    img: '/real-images/ChatGPT%20Image%20Jun%2021%2C%202025%2C%2009_26_58%20PM.png',
+    alt: 'Aguas frescas de horchata y jamaica',
   },
 ];
 ---
@@ -49,18 +73,23 @@ const platillos = [
       {platillos.map((p) => (
         <article class="platillo-card" data-reveal>
           <div class="platillo-card__img-wrap">
-            <img
-              src={p.img}
-              alt={p.nombre}
-              class="platillo-card__img"
-              loading="lazy"
-              decoding="async"
-            />
+            {p.img ? (
+              <img
+                src={p.img}
+                alt={p.alt}
+                class="platillo-card__img"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="platillo-card__img--placeholder" role="img" aria-label={p.alt}>
+                <span>Foto próximamente</span>
+              </div>
+            )}
           </div>
           <div class="platillo-card__body">
             <h3 class="platillo-card__nombre">{p.nombre}</h3>
             <p class="platillo-card__desc">{p.descripcion}</p>
-            <span class="platillo-card__precio">{p.precio}</span>
           </div>
         </article>
       ))}
@@ -162,12 +191,24 @@ const platillos = [
   margin-bottom: var(--space-md);
 }
 
-.platillo-card__precio {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-navy);
+.platillo-card__img--placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(135deg, var(--color-cream) 0%, color-mix(in srgb, var(--color-navy) 8%, var(--color-cream)) 100%);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-navy) 8%, transparent);
+}
+
+.platillo-card__img--placeholder span {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-60);
 }
 
 /* Mobile */
