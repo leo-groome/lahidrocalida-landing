@@ -556,9 +556,17 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+  }
+
   .hero__content {
-    padding-top: 6rem;
+    padding-top: 5rem;
     padding-inline: var(--space-md);
+  }
+
+  .hero__slogan {
+    margin-bottom: var(--space-md);
   }
 
   .hero__ctas {
@@ -566,18 +574,59 @@
     align-items: center;
   }
 
+  /* Curated subset of floating ingredients on mobile: enough to feel
+     alive (idle bob + fade-on-scroll) without cluttering a small screen.
+     Hide all, then re-show a few repositioned to the empty side margins. */
   .hero__ingredients {
+    display: block;
+  }
+
+  .hero__ingredients .ingredient-float {
     display: none;
   }
 
+  .ingredient--lime-tl,
+  .ingredient--ancho-tl,
+  .ingredient--oregano-br,
+  .ingredient--corn-r,
+  .ingredient--totopo-l {
+    display: block !important;
+    width: clamp(46px, 14vw, 68px);
+  }
+
+  .ingredient--lime-tl    { top: 13%; left: 4%; right: auto; }
+  .ingredient--ancho-tl   { top: 9%;  left: auto; right: 5%; }
+  .ingredient--oregano-br { top: 30%; left: auto; right: 4%; }
+  .ingredient--corn-r     { top: 34%; left: 5%; right: auto; }
+  .ingredient--totopo-l   { top: 58%; left: 6%; right: auto; }
+
+  /* Bowl raised into the viewport so its float + scroll-scale are visible. */
   .hero__bowl-wrapper {
-    bottom: -2vh;
+    bottom: 8vh;
   }
 
   .hero__bowl-img {
-    width: clamp(400px, 90vw, 650px);
+    width: clamp(380px, 96vw, 580px);
     max-width: none;
   }
+}
+
+/* Very narrow phones (≤360px): shrink the floating ingredients and tuck
+   them tighter to the edges so they never crowd the centered title. */
+@media (max-width: 360px) {
+  .ingredient--lime-tl,
+  .ingredient--ancho-tl,
+  .ingredient--oregano-br,
+  .ingredient--corn-r,
+  .ingredient--totopo-l {
+    width: clamp(38px, 12vw, 50px);
+  }
+
+  .ingredient--lime-tl    { top: 12%; left: 2%; }
+  .ingredient--ancho-tl   { top: 8%;  right: 2%; }
+  .ingredient--oregano-br { top: 28%; right: 2%; }
+  .ingredient--corn-r     { top: 32%; left: 2%; }
+  .ingredient--totopo-l   { top: 56%; left: 3%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

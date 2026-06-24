@@ -319,5 +319,15 @@ reviews.forEach((r, i) => {
   .reviews__wall {
     columns: 1;
   }
+
+  /* Trim the wall on mobile to avoid endless scroll — show the first 5
+     and let the "Ver más reseñas en Google" CTA handle the rest. */
+  .reviews__wall > :nth-child(n + 6) {
+    display: none;
+  }
+
+  .reviews__footer {
+    margin-top: var(--space-xl);
+  }
 }
 </style>

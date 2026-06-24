@@ -198,6 +198,16 @@ import NavbarMobile from './vue/NavbarMobile.vue';
   .navbar__ctas {
     display: none;
   }
+
+  .navbar {
+    justify-content: space-between;
+    padding-inline: var(--space-md);
+  }
+
+  /* Push the hamburger to the far right (logo stays left). */
+  :global(.navbar-mobile) {
+    margin-left: auto;
+  }
 }
 
 @media (min-width: 769px) {
