@@ -24,7 +24,7 @@
 
 <template>
   <div class="navbar-mobile">
-    <!-- Hamburger -->
+    <!-- Hamburger (opener) -->
     <button
       class="hamburger"
       :class="{ 'is-open': isOpen }"
@@ -56,6 +56,12 @@
         role="navigation"
         aria-label="Menú principal"
       >
+        <button class="drawer-close" @click="close" aria-label="Cerrar menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+
         <ul>
           <li><a href="#menu" @click="close">Menú</a></li>
           <li><a href="#nosotros" @click="close">Nosotros</a></li>
@@ -88,10 +94,6 @@
   padding: 4px;
   border-radius: 8px;
   transition: background 200ms;
-  /* Stay above the drawer/overlay so it remains visible and tappable
-     to close the menu once the panel is opaque. */
-  position: relative;
-  z-index: 100;
 }
 
 .hamburger:hover {
@@ -135,14 +137,31 @@
   right: 0;
   bottom: 0;
   width: min(320px, 85vw);
-  /* Solid, opaque panel (explicit hex — no var dependency) so the hero
-     never shows through, with a shadow to separate it from the page. */
+  /* Solid, opaque panel so the hero never shows through. */
   background: #ffffff;
   box-shadow: -10px 0 30px rgba(26, 18, 8, 0.18);
   z-index: 99;
   padding: 5rem var(--space-xl) var(--space-xl);
   display: flex;
   flex-direction: column;
+}
+
+.drawer-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink);
+  border-radius: 8px;
+  transition: background 200ms;
+}
+
+.drawer-close:hover {
+  background: rgba(26, 18, 8, 0.06);
 }
 
 .mobile-drawer ul {
@@ -165,6 +184,8 @@
 
 .mobile-drawer .btn {
   margin-top: var(--space-md);
+  width: 100%;
+  justify-content: center;
 }
 
 /* Transitions */

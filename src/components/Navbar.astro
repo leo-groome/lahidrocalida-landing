@@ -70,15 +70,29 @@ import NavbarMobile from './vue/NavbarMobile.vue';
   align-items: center;
   gap: var(--space-xl);
   padding: var(--space-md) var(--space-xl);
+  transition: box-shadow var(--transition);
+}
+
+/* The glass background + blur live on a pseudo-element so the .navbar itself
+   does NOT create a containing block (backdrop-filter would), which used to
+   trap the fixed mobile drawer/overlay inside the navbar's height. */
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(250, 244, 232, 0.75);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border-bottom: 1px solid rgba(200, 151, 26, 0.12);
-  transition: background var(--transition), box-shadow var(--transition);
+  transition: background var(--transition);
+}
+
+.navbar.scrolled::before {
+  background: rgba(250, 244, 232, 0.95);
 }
 
 .navbar.scrolled {
-  background: rgba(250, 244, 232, 0.95);
   box-shadow: var(--shadow-sm);
 }
 
