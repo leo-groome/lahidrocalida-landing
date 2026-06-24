@@ -65,7 +65,7 @@
               href="https://wa.me/524493896785"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn btn--primary"
+              class="btn btn--whatsapp"
               @click="close"
             >
               Ordenar por WhatsApp
@@ -88,6 +88,10 @@
   padding: 4px;
   border-radius: 8px;
   transition: background 200ms;
+  /* Stay above the drawer/overlay so it remains visible and tappable
+     to close the menu once the panel is opaque. */
+  position: relative;
+  z-index: 100;
 }
 
 .hamburger:hover {
@@ -119,7 +123,7 @@
 .mobile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(26, 18, 8, 0.4);
+  background: rgba(26, 18, 8, 0.55);
   backdrop-filter: blur(2px);
   z-index: 98;
 }
@@ -131,7 +135,10 @@
   right: 0;
   bottom: 0;
   width: min(320px, 85vw);
-  background: var(--color-cream);
+  /* Solid, opaque panel (explicit hex — no var dependency) so the hero
+     never shows through, with a shadow to separate it from the page. */
+  background: #ffffff;
+  box-shadow: -10px 0 30px rgba(26, 18, 8, 0.18);
   z-index: 99;
   padding: 5rem var(--space-xl) var(--space-xl);
   display: flex;
