@@ -1,57 +1,134 @@
 ---
 const reviews = [
   {
-    nombre: 'María González',
-    texto: 'Sin duda el mejor pozole de Aguascalientes. La sazón es como el de mi abuela — cálido, reconfortante y con un sabor que te regresa a la infancia.',
+    nombre: 'Brenda Bañuelos',
+    meta: '8 reseñas',
+    texto: 'Muy agradable lugar, limpio y fresco, se agradece en tiempos de calor. El pozole verde 10/10, el rojo muy rico. Excelente servicio y muy rápido en atender.',
+    inicial: 'B',
     avatarBg: 'var(--color-navy)',
     avatarColor: '#fff',
-    inicial: 'M',
   },
   {
-    nombre: 'Carlos Ruiz',
-    texto: 'Ambiente familiar, servicio impecable y los chiles toreados son absolutamente adictivos. Ya van más de diez visitas y nunca defrauda.',
-    avatarBg: 'var(--color-yellow)',
-    avatarColor: 'var(--color-navy)',
-    inicial: 'C',
-  },
-  {
-    nombre: 'Ana Mendoza',
-    texto: 'Visitar La Hidrocálida es regresar a casa. Cada cucharada es un abrazo. El local es acogedor y el pozole especial justifica el viaje desde cualquier parte de la ciudad.',
+    nombre: 'Enrique Rodríguez',
+    meta: 'Local Guide · 66 reseñas',
+    texto: 'Pozole exquisito y el servicio muy bueno, es la segunda vez que vengo y no va a ser la última.',
+    inicial: 'E',
     avatarBg: 'var(--color-green-brand)',
     avatarColor: '#fff',
-    inicial: 'A',
+  },
+  {
+    nombre: 'Dulce Lomeli',
+    meta: '8 reseñas',
+    texto: '¡Súper rico todo lo que probamos! El servicio es bueno, son muy amables. Seguro volveremos.',
+    inicial: 'D',
+    avatarBg: 'var(--color-yellow)',
+    avatarColor: 'var(--color-navy)',
+  },
+  {
+    nombre: 'Dafne Alemán',
+    meta: '3 reseñas',
+    texto: '¡Recomendado totalmente! Superó mis expectativas. Sabor increíble y perfecto para disfrutar una buena comida en compañía.',
+    inicial: 'D',
+    avatarBg: 'var(--color-navy)',
+    avatarColor: '#fff',
+  },
+  {
+    nombre: 'Omar Delgado',
+    meta: '3 reseñas',
+    texto: 'Excelente experiencia. Desde que llegas el ambiente es muy agradable y el servicio atento y rápido. El pozole es, sin duda, el protagonista.',
+    inicial: 'O',
+    avatarBg: 'var(--color-yellow)',
+    avatarColor: 'var(--color-navy)',
+  },
+  {
+    nombre: 'Carlitos Medimal',
+    meta: 'Local Guide · 43 reseñas',
+    texto: 'Muy amable el personal y los platillos muy ricos. Creo que pudieran ampliar un poco más el menú.',
+    inicial: 'C',
+    avatarBg: 'var(--color-green-brand)',
+    avatarColor: '#fff',
+  },
+  {
+    nombre: 'Rocío Ceballos Godefroy',
+    meta: 'Local Guide · 18 reseñas',
+    texto: 'El lugar es bonito y agradable, la comida muy rica, además el personal súper servicial y amable.',
+    inicial: 'R',
+    avatarBg: 'var(--color-navy)',
+    avatarColor: '#fff',
+  },
+  {
+    nombre: 'Karen García',
+    meta: 'Local Guide · 22 reseñas',
+    texto: 'Deliciosa comida y excelente atención. Servicio amable y rápido. Mucha variedad de opciones de comida mexicana.',
+    inicial: 'K',
+    avatarBg: 'var(--color-yellow)',
+    avatarColor: 'var(--color-navy)',
+  },
+  {
+    nombre: 'Orlando Vélez',
+    meta: 'Local Guide · 16 reseñas',
+    texto: 'Me gustó el tamaño y sabor del pozole rojo y los complementos. Además venden agua de horchata y jamaica. Lugar amplio, limpio, buena iluminación. Servicio rápido y amable.',
+    inicial: 'O',
+    avatarBg: 'var(--color-green-brand)',
+    avatarColor: '#fff',
   },
 ];
+
+// Fotos reales intercaladas en el muro para que sea un verdadero collage.
+const fotos = {
+  2: { img: '/real-images/review-pozole-verde.webp', alt: 'Pozole verde con rábano y cebolla, servido en La Hidrocálida' },
+  5: { img: '/real-images/review-mesa.webp', alt: 'Mesa servida con enchiladas, sopes, chicharrón y pozole verde' },
+  8: { img: '/real-images/review-local.webp', alt: 'Fachada nocturna de La Hidrocálida Pozolería' },
+};
+
+// Construye el orden final del muro: cada reseña, con una foto insertada antes
+// de los índices 2, 5 y 8 para distribuirlas entre las columnas.
+const wall = [];
+reviews.forEach((r, i) => {
+  if (fotos[i]) wall.push({ tipo: 'foto', ...fotos[i] });
+  wall.push({ tipo: 'review', ...r });
+});
 ---
 
 <section id="reviews" class="reviews">
   <div class="reviews__container">
-    <p class="reviews__eyebrow" data-reveal>RESEÑAS</p>
+    <p class="reviews__eyebrow" data-reveal>RESEÑAS DE GOOGLE</p>
     <h2 class="reviews__heading" data-reveal>Lo que dicen nuestros comensales</h2>
 
-    <div class="reviews__grid" data-reveal-group>
-      {reviews.map((r) => (
-        <article class="review-card" data-reveal>
+    <div class="reviews__wall" data-reveal-group="pop">
+      {wall.map((item) => item.tipo === 'foto' ? (
+        <figure class="review-photo" data-reveal="pop">
+          <img src={item.img} alt={item.alt} loading="lazy" decoding="async" />
+        </figure>
+      ) : (
+        <article class="review-card" data-reveal="pop">
           <div class="review-card__header">
             <div
               class="review-card__avatar"
-              style={`background: ${r.avatarBg}; color: ${r.avatarColor};`}
+              style={`background: ${item.avatarBg}; color: ${item.avatarColor};`}
               aria-hidden="true"
             >
-              {r.inicial}
+              {item.inicial}
             </div>
             <div class="review-card__meta">
-              <p class="review-card__nombre">{r.nombre}</p>
-              <div class="review-card__stars" aria-label="5 estrellas" role="img">
-                {Array.from({ length: 5 }).map(() => (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--color-yellow)" aria-hidden="true">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                ))}
-              </div>
+              <p class="review-card__nombre">{item.nombre}</p>
+              <p class="review-card__sub">{item.meta}</p>
             </div>
+            <svg class="review-card__google" width="18" height="18" viewBox="0 0 24 24" aria-label="Reseña de Google" role="img">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+            </svg>
           </div>
-          <p class="review-card__texto">"{r.texto}"</p>
+          <div class="review-card__stars" aria-label="5 estrellas" role="img">
+            {Array.from({ length: 5 }).map(() => (
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--color-yellow)" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="review-card__texto">{item.texto}</p>
         </article>
       ))}
     </div>
@@ -101,14 +178,17 @@ const reviews = [
   line-height: 1.15;
 }
 
-.reviews__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-lg);
+/* Masonry wall — variable-height cards flow across columns */
+.reviews__wall {
+  columns: 3 300px;
+  column-gap: var(--space-lg);
   text-align: left;
 }
 
 .review-card {
+  break-inside: avoid;
+  width: 100%;
+  margin-bottom: var(--space-lg);
   background: var(--color-white);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
@@ -117,8 +197,35 @@ const reviews = [
 }
 
 .review-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.025);
   box-shadow: var(--shadow-lg);
+}
+
+/* Photo tiles — real food/storefront shots woven into the wall */
+.review-photo {
+  break-inside: avoid;
+  width: 100%;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.review-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 500ms var(--ease-out);
+}
+
+.review-photo:hover {
+  transform: translateY(-4px) scale(1.025);
+  box-shadow: var(--shadow-lg);
+}
+
+.review-photo:hover img {
+  transform: scale(1.06);
 }
 
 .review-card__header {
@@ -129,14 +236,14 @@ const reviews = [
 }
 
 .review-card__avatar {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -144,7 +251,9 @@ const reviews = [
 .review-card__meta {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
 }
 
 .review-card__nombre {
@@ -154,16 +263,27 @@ const reviews = [
   line-height: 1.2;
 }
 
+.review-card__sub {
+  font-size: 0.75rem;
+  color: var(--color-ink-60);
+  line-height: 1.2;
+}
+
+.review-card__google {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
 .review-card__stars {
   display: flex;
   gap: 2px;
+  margin-bottom: var(--space-sm);
 }
 
 .review-card__texto {
   font-size: 0.9375rem;
   color: var(--color-ink-60);
-  font-style: italic;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 .reviews__footer {
@@ -184,14 +304,20 @@ const reviews = [
   opacity: 1;
 }
 
+@media (max-width: 1024px) {
+  .reviews__wall {
+    columns: 2 280px;
+  }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .reviews {
     padding: var(--space-2xl) var(--space-md);
   }
 
-  .reviews__grid {
-    grid-template-columns: 1fr;
+  .reviews__wall {
+    columns: 1;
   }
 }
 </style>

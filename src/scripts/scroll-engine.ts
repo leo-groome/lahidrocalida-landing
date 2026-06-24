@@ -178,11 +178,14 @@ function initReveals(): void {
     );
     if (!children.length) return;
 
-    // CSS handles opacity:0 (via html.js selector); set initial x/y here.
+    // CSS handles opacity:0 (via html.js selector); set initial x/y/scale here.
     children.forEach(el => {
       const from = revealFrom(el.dataset.reveal);
-      gsap.set(el, { x: from.x, y: from.y });
+      gsap.set(el, { x: from.x, y: from.y, scale: from.scale });
     });
+
+    // Pop groups overshoot on entry for a punchier "wall" reveal.
+    const isPop = group.dataset.revealGroup === 'pop';
 
     ScrollTrigger.batch(children, {
       start: 'top 82%',
@@ -191,16 +194,17 @@ function initReveals(): void {
           opacity: 1,
           x: 0,
           y: 0,
-          stagger: 0.12,
-          duration: 0.7,
-          ease: 'power2.out',
+          scale: 1,
+          stagger: isPop ? 0.08 : 0.12,
+          duration: isPop ? 0.6 : 0.7,
+          ease: isPop ? 'back.out(1.5)' : 'power2.out',
           overwrite: true,
         });
       },
       onLeaveBack: (batch: Element[]) => {
         (batch as HTMLElement[]).forEach(el => {
           const from = revealFrom(el.dataset.reveal);
-          gsap.set(el, { opacity: 0, x: from.x, y: from.y, overwrite: true });
+          gsap.set(el, { opacity: 0, x: from.x, y: from.y, scale: from.scale, overwrite: true });
         });
       },
     });
@@ -213,13 +217,15 @@ function initReveals(): void {
     if (el.closest('[data-reveal-group]')) return;
 
     const from = revealFrom(el.dataset.reveal);
+    const pop = el.dataset.reveal === 'pop';
 
     gsap.fromTo(el, from, {
       opacity: 1,
       x: 0,
       y: 0,
-      duration: 0.7,
-      ease: 'power2.out',
+      scale: 1,
+      duration: pop ? 0.6 : 0.7,
+      ease: pop ? 'back.out(1.5)' : 'power2.out',
       scrollTrigger: {
         trigger: el,
         start: 'top 82%',
@@ -234,16 +240,19 @@ interface RevealVars {
   opacity: number;
   x: number;
   y: number;
+  scale: number;
 }
 
 /**
  * Returns the GSAP "from" state for a given data-reveal direction value.
  * "left"  → slide in from the left
  * "right" → slide in from the right
+ * "pop"   → scale up from 0.82 with a small upward offset (overshoot on entry)
  * default → fade up (no value or "up")
  */
 function revealFrom(dir: string | undefined): RevealVars {
-  if (dir === 'left')  return { opacity: 0, x: -60, y: 0 };
-  if (dir === 'right') return { opacity: 0, x: 60,  y: 0 };
-  return { opacity: 0, x: 0, y: 48 };
+  if (dir === 'left')  return { opacity: 0, x: -60, y: 0,  scale: 1 };
+  if (dir === 'right') return { opacity: 0, x: 60,  y: 0,  scale: 1 };
+  if (dir === 'pop')   return { opacity: 0, x: 0,   y: 30, scale: 0.82 };
+  return { opacity: 0, x: 0, y: 48, scale: 1 };
 }
