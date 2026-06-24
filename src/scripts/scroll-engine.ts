@@ -131,7 +131,30 @@ function initHero(mode: 'desktop' | 'mobile'): void {
     // Hero copy fades and slides up
     if (copy) tl.to(copy, { opacity: 0, y: -40, ease: 'power1.in' }, 0);
   } else {
-    // Mobile: no pin (avoids jank), lighter fade-out + gentle bowl scale.
+    // Mobile: no pin (avoids jank). The desktop scroll-scatter needs pinning,
+    // so instead we give the hero an appreciable LOAD entrance — the curated
+    // ingredients pop in, the copy rises, and the bowl floats up — plus a
+    // gentle bowl scale on scroll.
+    //
+    // Entrance and scroll-scale stay on SEPARATE properties so they never
+    // fight: entrance animates opacity/y/scale-of-ingredients; the scroll
+    // tween only touches the bowl's scale (baseline 1, untouched by entrance).
+    const visibleIngredients = ingredients.filter(
+      el => getComputedStyle(el).display !== 'none',
+    );
+
+    gsap.from(visibleIngredients, {
+      opacity: 0,
+      scale: 0.4,
+      duration: 0.7,
+      ease: 'back.out(1.7)',
+      stagger: 0.07,
+      delay: 0.15,
+    });
+
+    if (copy) gsap.from(copy, { opacity: 0, y: 24, duration: 0.7, ease: 'power2.out' });
+    if (bowl) gsap.from(bowl, { opacity: 0, y: 50, duration: 0.9, ease: 'power2.out', delay: 0.1 });
+
     const mobileST = {
       trigger: '.hero',
       start: 'top top',
@@ -140,10 +163,6 @@ function initHero(mode: 'desktop' | 'mobile'): void {
     };
 
     if (bowl) gsap.to(bowl, { scale: 1.2, scrollTrigger: mobileST });
-
-    // Ingredients are hidden via CSS on mobile (display:none on the
-    // .hero__ingredients container) but we animate them defensively.
-    ingredients.forEach(el => gsap.to(el, { opacity: 0, scrollTrigger: mobileST }));
   }
 }
 

@@ -600,14 +600,22 @@
   .ingredient--corn-r     { top: 34%; left: 5%; right: auto; }
   .ingredient--totopo-l   { top: 58%; left: 6%; right: auto; }
 
-  /* Bowl raised into the viewport so its float + scroll-scale are visible. */
+  /* Bowl raised into the viewport so its float + scroll-scale are visible.
+     Width capped to the viewport (no fixed min) to avoid horizontal overflow
+     on narrow phones — that overflow was forcing the page to zoom out. */
   .hero__bowl-wrapper {
     bottom: 8vh;
   }
 
   .hero__bowl-img {
-    width: clamp(380px, 96vw, 580px);
+    width: min(92vw, 560px);
     max-width: none;
+  }
+
+  /* Glow constrained so it never relies on clipping to stay on-screen. */
+  .hero__bowl-glow {
+    width: min(120vw, 460px);
+    height: min(120vw, 460px);
   }
 }
 
